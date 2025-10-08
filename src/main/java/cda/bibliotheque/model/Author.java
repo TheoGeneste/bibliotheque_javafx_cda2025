@@ -1,8 +1,10 @@
 package cda.bibliotheque.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Author {
+
     private int id;
     private String lastname;
     private String firstname;
@@ -16,6 +18,13 @@ public class Author {
         this.lastname = lastname;
         this.firstname = firstname;
         this.born_at = born_at;
+    }
+
+    public Author(int id, String lastname, String firstname, Date born_at) {
+        this.id = id;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.born_at = born_at.toLocalDate();
     }
 
     public int getId() {
@@ -34,8 +43,16 @@ public class Author {
         return born_at;
     }
 
+    public Date getBorn_at_Date() {
+        return Date.valueOf(born_at);
+    }
+
     public void setBorn_at(LocalDate born_at) {
         this.born_at = born_at;
+    }
+
+    public void setBorn_at(Date born_at) {
+        this.born_at = born_at.toLocalDate();
     }
 
     public void setLastname(String lastname) {

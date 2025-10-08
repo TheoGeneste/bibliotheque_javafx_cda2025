@@ -1,3 +1,6 @@
+CREATE DATABASE bibliotheque;
+USE bibliotheque;
+
 CREATE TABLE books(
    id INT AUTO_INCREMENT,
    title VARCHAR(255) NOT NULL,
@@ -76,5 +79,5 @@ CREATE TABLE have(
    gender_id INT,
    PRIMARY KEY(book_id, gender_id),
    FOREIGN KEY(book_id) REFERENCES books(id),
-   FOREIGN KEY(gender_id) REFERENCES gender(gender_id)
+   FOREIGN KEY(gender_id) REFERENCES gender(id)
 );
