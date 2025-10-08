@@ -1,4 +1,4 @@
-package cda.bibliotheque.controller;
+package cda.bibliotheque.controller.Author;
 
 import java.io.IOException;
 
@@ -33,7 +33,7 @@ public class EditAuthorController {
         newAuthor.setFirstname(inputFirstName.getText());
         newAuthor.setLastname(inputLastName.getText());
         authorDAO.updateAuthor(newAuthor);
-        App.setRoot("authors");
+        App.setRoot("authors/authors");
     }
 
     @FXML

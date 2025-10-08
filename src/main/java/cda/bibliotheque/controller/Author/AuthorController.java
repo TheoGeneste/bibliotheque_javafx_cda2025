@@ -1,4 +1,4 @@
-package cda.bibliotheque.controller;
+package cda.bibliotheque.controller.Author;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -12,15 +12,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 public class AuthorController {
 
@@ -58,7 +55,7 @@ public class AuthorController {
                     int index = getIndex();
                     Author authorToEdit = authorsTable.getItems().get(index);
                     try {
-                        FXMLLoader loader = new FXMLLoader(App.class.getResource("edit-author.fxml"));
+                        FXMLLoader loader = new FXMLLoader(App.class.getResource("authors/edit-author.fxml"));
                         Parent parent = loader.load();
 
                         EditAuthorController editAuthorController = loader.getController();
@@ -101,7 +98,7 @@ public class AuthorController {
 
     @FXML
     private void switchToCreate() throws IOException {
-        App.setRoot("create-author");
+        App.setRoot("authors/create-author");
     }
 
 }
