@@ -37,9 +37,9 @@ public class EditAuthorController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         author.addListener((obs, oldAuthor, newAuthor) -> {
-            if (newAuthor != null) {   
+            if (newAuthor != null) {
                 inputBornDate.setValue(newAuthor.getBorn_at());
                 inputFirstName.setText(newAuthor.getFirstname());
                 inputLastName.setText(newAuthor.getLastname());
@@ -54,4 +54,10 @@ public class EditAuthorController {
     public void setAuthor(Author author) {
         this.author.set(author);
     }
+
+    @FXML
+    private void switchToAuthors() throws IOException {
+        App.setRoot("authors/authors");
+    }
+
 }

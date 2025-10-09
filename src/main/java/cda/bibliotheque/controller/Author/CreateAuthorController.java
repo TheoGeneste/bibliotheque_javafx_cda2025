@@ -33,4 +33,9 @@ public class CreateAuthorController {
         App.setRoot("authors/authors");
     }
 
+    @FXML
+    private void switchToAuthors() throws IOException {
+        App.setRoot("authors/authors");
+    }
+
 }

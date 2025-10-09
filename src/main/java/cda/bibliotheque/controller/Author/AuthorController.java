@@ -101,4 +101,9 @@ public class AuthorController {
         App.setRoot("authors/create-author");
     }
 
+    @FXML
+    private void switchToMain() throws IOException {
+        App.setRoot("primary");
+    }
+
 }
