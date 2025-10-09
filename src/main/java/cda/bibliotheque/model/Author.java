@@ -64,7 +64,20 @@ public class Author {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.firstname + " " + this.lastname;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Author other = (Author) obj;
+        return this.id == other.id; // ou compare le nom si pas d'id
+    }
+
 }

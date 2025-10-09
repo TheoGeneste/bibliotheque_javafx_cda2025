@@ -81,4 +81,25 @@ public class AuthorDAO {
             System.err.println("Erreur lors de la suppression dans deleteAuthor -> " + e.getMessage());
         }
     }
+
+    public List<Author> getAuthorsByBook(int book){
+        List<Author> authors = new ArrayList<>();
+        String sql = "SELECT author.id, firstname, lastname, born_at FROM author INNER JOIN writes ON author_id = id WHERE book_id = ?;";
+        try(PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, book);
+            ResultSet rSet = stmt.executeQuery();
+            while (rSet.next()) {
+                authors.add(new Author(
+                    rSet.getInt("id"),
+                    rSet.getString("lastname"),
+                    rSet.getString("firstname"),
+                    rSet.getDate("born_at")
+                ));
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la récupération dans getAuthorsByBook -> " + e.getMessage());
+        }
+
+        return authors;
+    }
 }

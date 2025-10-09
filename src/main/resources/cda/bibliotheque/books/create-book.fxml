@@ -5,6 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -63,6 +64,7 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <ListView fx:id="inputAuthors" prefHeight="200.0" prefWidth="200.0" />
       <Button mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="730.0" text="Enregistrer" />
    </children>
    <padding>

@@ -17,17 +17,19 @@ public class Book {
 
     }
 
-    public Book(int id, String title, LocalDate releaseDate, boolean isAvailable) {
+    public Book(int id, String title, LocalDate releaseDate, boolean isAvailable,List<Author> authors) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
         this.isAvailable = isAvailable;
+        this.authors = authors;
     }
 
-    public Book(String title, LocalDate releaseDate, boolean isAvailable) {
+    public Book(String title, LocalDate releaseDate, boolean isAvailable, List<Author> authors) {
         this.title = title;
         this.releaseDate = releaseDate;
         this.isAvailable = isAvailable;
+        this.authors = authors;
     }
 
     public String getTitle() {
@@ -50,6 +52,14 @@ public class Book {
         return id;
     }
 
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -65,9 +75,13 @@ public class Book {
     public String toStringAuthors() {
         String authorsString = "";
         for (Author a : authors) {
-            authorsString = authorsString + a.toString();
+            authorsString = authorsString + a.toString() + "\n";
         }
         return authorsString;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
 }

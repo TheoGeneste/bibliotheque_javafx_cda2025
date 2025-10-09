@@ -7,7 +7,6 @@ import java.util.List;
 import cda.bibliotheque.App;
 import cda.bibliotheque.dao.BookDAO;
 import cda.bibliotheque.model.Book;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -17,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -49,7 +49,34 @@ public class BooksController {
     public void initialize() {
         colTitle.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTitle()));
         colRealeaseDate.setCellValueFactory(cell -> new SimpleObjectProperty<LocalDate>(cell.getValue().getReleaseDate()));
-        colIsAvailable.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().getIsAvailable()));
+        colIsAvailable.setCellFactory(cell -> new TableCell<>() {
+            CheckBox checkBox = new CheckBox("");
+
+            {
+                checkBox.selectedProperty().addListener((obs, oldValue, newValue) -> {
+                    int index = getIndex();
+                    Book bookToEdit = booksTable.getItems().get(index);
+                    bookToEdit.setIsAvailable(newValue);
+                    bookDAO.updateBook(bookToEdit);
+                });
+
+            }
+
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    Book book = getTableRow().getItem();
+                    if (book != null) {
+                        checkBox.setSelected(book.getIsAvailable());
+                    }
+                    setGraphic(checkBox);
+                }
+            }
+
+        });
         colAuthors.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().toStringAuthors()));
         colActions.setCellFactory(cell -> new TableCell<>() {
             Button editButton = new Button("Modifier");
