@@ -31,6 +31,12 @@ public class Book {
         this.isAvailable = isAvailable;
         this.authors = authors;
     }
+    public Book(int id, String title, LocalDate releaseDate, boolean isAvailable) {
+        this.id = id;
+        this.title = title;
+        this.releaseDate = releaseDate;
+        this.isAvailable = isAvailable;
+    }
 
     public String getTitle() {
         return title;

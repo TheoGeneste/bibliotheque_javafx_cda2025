@@ -66,6 +66,10 @@ public class BookDAO {
             pstmt.setBoolean(3, book.getIsAvailable());
             pstmt.setInt(4, book.getId());
             int rows = pstmt.executeUpdate();
+            writeDAO.deleteByBook(book.getId());
+            for(Author auth : book.getAuthors()){
+                writeDAO.insert(auth.getId(), book.getId());
+            }
             if (rows > 0) {
                 System.out.println("Livre mis à jour");
             } else {
