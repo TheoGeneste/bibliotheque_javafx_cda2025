@@ -90,4 +90,9 @@ public class Book {
         this.authors = authors;
     }
 
+    @Override
+    public String toString() {
+        return this.title;
+    }
+
 }

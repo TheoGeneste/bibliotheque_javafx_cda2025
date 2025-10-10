@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cda.bibliotheque.controller.Borrow.EditBorrowController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="600.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToBorrows" prefHeight="36.0" prefWidth="64.0" text="Retour" />
+            <Label alignment="CENTER" prefHeight="35.0" prefWidth="518.0" text="Création d'un emprunt">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label text="Livre">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="inputBook" prefHeight="25.0" prefWidth="628.0" />
+      <HBox prefHeight="27.0" prefWidth="580.0">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <children>
+            <Label text="Client">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ChoiceBox fx:id="inputClient" prefHeight="25.0" prefWidth="628.0" />
+      <HBox prefHeight="27.0" prefWidth="580.0">
+         <children>
+            <Label text="Date de début">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <DatePicker fx:id="inputStartDate" prefHeight="25.0" prefWidth="597.0" />
+      <HBox prefHeight="27.0" prefWidth="580.0">
+         <children>
+            <Label text="Date de Fin">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <DatePicker fx:id="inputEndDate" prefHeight="25.0" prefWidth="597.0" />
+      <Button mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="730.0" text="Enregistrer" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
