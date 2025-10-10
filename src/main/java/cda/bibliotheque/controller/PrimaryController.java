@@ -30,5 +30,17 @@ public class PrimaryController {
         App.setRoot("editors/editors");
 
     }
+    @FXML
+    void switchToGenres(ActionEvent event) throws IOException{
+        App.setRoot("genres/genres");
+
+    }
+    @FXML
+    void switchToBorrows(ActionEvent event) throws IOException{
+        App.setRoot("borrows/borrows");
+
+    }
+
+    
 
 }

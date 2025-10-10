@@ -24,12 +24,15 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button onAction="#switchToBooks" prefHeight="25.0" prefWidth="391.0" text="Livres" />
             <Button onAction="#switchToAuthors" prefHeight="25.0" prefWidth="391.0" text="Auteurs" GridPane.columnIndex="1" />
             <Button onAction="#switchToClients" prefHeight="25.0" prefWidth="391.0" text="Clients" GridPane.rowIndex="1" />
             <Button onAction="#switchToEditor" prefHeight="25.0" prefWidth="391.0" text="Éditeurs" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button onAction="#switchToGenres" prefHeight="25.0" prefWidth="391.0" text="Genres" GridPane.rowIndex="2" />
+            <Button onAction="#switchToBorrows" prefHeight="25.0" prefWidth="391.0" text="Emprunts" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
