@@ -62,4 +62,9 @@ public class Editor {
         this.label = label;
     }
 
+    @Override
+    public String toString(){
+        return this.label;
+    }
+
 }

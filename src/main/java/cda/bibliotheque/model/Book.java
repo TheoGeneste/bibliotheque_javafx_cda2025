@@ -12,25 +12,31 @@ public class Book {
     private LocalDate releaseDate;
     private boolean isAvailable;
     private List<Author> authors = new ArrayList<>();
+    private List<Genre> genres = new ArrayList<>();
+    private List<Editor> editors = new ArrayList<>();
 
     public Book() {
 
     }
 
-    public Book(int id, String title, LocalDate releaseDate, boolean isAvailable,List<Author> authors) {
+    public Book(int id, String title, LocalDate releaseDate, boolean isAvailable, List<Author> authors, List<Genre> genres) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
         this.isAvailable = isAvailable;
         this.authors = authors;
+        this.genres = genres;
     }
 
-    public Book(String title, LocalDate releaseDate, boolean isAvailable, List<Author> authors) {
+    public Book(String title, LocalDate releaseDate, boolean isAvailable, List<Author> authors, List<Genre> genres, List<Editor> editors) {
         this.title = title;
         this.releaseDate = releaseDate;
         this.isAvailable = isAvailable;
         this.authors = authors;
+        this.genres = genres;
+        this.editors = editors;
     }
+
     public Book(int id, String title, LocalDate releaseDate, boolean isAvailable) {
         this.id = id;
         this.title = title;
@@ -86,6 +92,22 @@ public class Book {
         return authorsString;
     }
 
+    public String toStringGenre() {
+        String genresString = "";
+        for (Genre g : genres) {
+            genresString = genresString + g.getLabel() + "\n";
+        }
+        return genresString;
+    }
+
+    public String toStringEditors() {
+        String editorsString = "";
+        for (Editor e : editors) {
+            editorsString = editorsString + e.getLabel() + "\n";
+        }
+        return editorsString;
+    }
+
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
@@ -95,4 +117,11 @@ public class Book {
         return this.title;
     }
 
+    public List<Editor> getEditors() {
+        return editors;
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
 }

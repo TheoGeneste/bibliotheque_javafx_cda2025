@@ -26,4 +26,9 @@ public class Genre {
         this.label = label;
     }
 
+    @Override
+    public String toString(){
+        return this.label;
+    }
+
 }

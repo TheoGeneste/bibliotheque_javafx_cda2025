@@ -10,12 +10,17 @@ import java.util.List;
 
 import cda.bibliotheque.model.Author;
 import cda.bibliotheque.model.Book;
+import cda.bibliotheque.model.Editor;
+import cda.bibliotheque.model.Genre;
 
 public class BookDAO {
 
     private Connection connection;
     private final WriteDAO writeDAO = new WriteDAO();
     private final AuthorDAO authorDAO = new AuthorDAO();
+    private final GenreDAO genreDAO = new GenreDAO();
+    private final HaveDAO haveDAO = new HaveDAO();
+    private final DistributeDAO distributeDAO = new DistributeDAO();
 
     public BookDAO() {
         connection = DatabaseConnection.getConnection();
@@ -27,12 +32,14 @@ public class BookDAO {
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 List<Author> authors = authorDAO.getAuthorsByBook(rs.getInt("id"));
+                List<Genre> genres = genreDAO.getGenresByBook(rs.getInt("id"));
                 books.add(new Book(
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getDate("release_date").toLocalDate(),
                         rs.getBoolean("isAvailable"),
-                        authors
+                        authors,
+                        genres
                 ));
             }
         } catch (SQLException e) {
@@ -51,6 +58,13 @@ public class BookDAO {
             Book lastBook = getLastBookInserted();
             for (Author auth : book.getAuthors()) {
                 writeDAO.insert(auth.getId(), lastBook.getId());
+            }
+            for (Genre genre : book.getGenres()) {
+                haveDAO.insert(lastBook, genre);
+            }
+
+            for (Editor e : book.getEditors()) {
+                distributeDAO.insert(lastBook, e);
             }
             System.out.println("Ajout du livre effectué");
         } catch (SQLException e) {

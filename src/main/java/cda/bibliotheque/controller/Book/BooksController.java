@@ -34,6 +34,12 @@ public class BooksController {
     private TableColumn<Book, String> colAuthors;
 
     @FXML
+    private TableColumn<Book, String> colGenres;
+    
+    @FXML
+    private TableColumn<Book, String> colEditors;
+
+    @FXML
     private TableColumn<Book, Boolean> colIsAvailable;
 
     @FXML
@@ -78,6 +84,8 @@ public class BooksController {
 
         });
         colAuthors.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().toStringAuthors()));
+        colGenres.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().toStringGenre()));
+        colEditors.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().toStringEditors()));
         colActions.setCellFactory(cell -> new TableCell<>() {
             Button editButton = new Button("Modifier");
             Button deleteButton = new Button("Supprimer");

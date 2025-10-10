@@ -64,4 +64,19 @@ public class GenreDAO {
             System.err.println(e.getMessage());
         }
     }
+
+    public List<Genre> getGenresByBook(int id){
+        String sql = "SELECT id, label FROM gender INNER JOIN have on id = gender_id WHERE book_id = ?";
+        List<Genre> genres = new ArrayList<>();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                genres.add(new Genre(rs.getInt("id"),rs.getString("label")));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return genres;
+    }
 }

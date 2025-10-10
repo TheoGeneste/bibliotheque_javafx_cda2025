@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cda.bibliotheque.controller.Book.BooksController">
    <children>
       <HBox prefHeight="35.0" prefWidth="580.0">
@@ -28,6 +27,8 @@
           <TableColumn fx:id="colTitle" prefWidth="75.0" text="Title" />
           <TableColumn fx:id="colRealeaseDate" prefWidth="75.0" text="Date de sortie" />
             <TableColumn fx:id="colAuthors" prefWidth="75.0" text="Auteur(s)" />
+            <TableColumn fx:id="colGenres" prefWidth="75.0" text="Genre(s)" />
+            <TableColumn fx:id="colEditors" prefWidth="75.0" text="Editeur(s)" />
             <TableColumn fx:id="colIsAvailable" prefWidth="75.0" text="Disponible" />
             <TableColumn fx:id="colActions" prefWidth="75.0" text="Actions" />
         </columns>

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cda.bibliotheque.model.Book;
+import cda.bibliotheque.model.Editor;
 
 public class DistributeDAO {
     private Connection connection;
@@ -34,6 +35,17 @@ public class DistributeDAO {
             System.err.println(e.getMessage());
         }
         return books;
+    }
+
+    public void insert(Book book, Editor editor){
+        String sql = "INSERT INTO distribute(book_id, editor_id) VALUES (?,?)";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, book.getId());
+            preparedStatement.setInt(2, editor.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("insert distribute -> " +e.getMessage());
+        }
     }
     
 }
